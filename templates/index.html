@@ -1,0 +1,32 @@
+<!-- {% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <br><br>
+  <div class="row justify-content-sm-center">
+    <h1>Welcome to the r/learnpython Guest Book :)</h1>
+  </div>
+    <br>
+    <div class="row justify-content-sm-center">
+        <p class="text">source code available at <a href="https://github.com/brettvanderwerff/Reddit-Guestbook">Github</a></p>
+    </div>
+    <br><br><br><br>
+        <div class="row justify-content-sm-center">
+        <img src="/static/coding.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="236">
+        </div>
+    </div>
+{% endblock %} -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Review</title>
+  </head>
+  <body>
+    <h1>Upload Review</h1>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <textarea name="review" placeholder="Enter your review"></textarea>
+      <input type="submit" value="Upload" />
+    </form>
+  </body>
+</html>

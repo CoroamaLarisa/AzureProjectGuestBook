@@ -1,0 +1,12 @@
+{
+    "scriptFile": "__init__.py",
+    "bindings": [
+      {
+        "name": "msg",
+        "type": "queueTrigger",
+        "direction": "in",
+        "queueName": "thumbnailqueue",
+        "connection": "DefaultEndpointsProtocol=https;AccountName=gcccstorageguestbook;AccountKey=A7mPkaoOQ+OHPGihyYattLUSmqRTA6WCHtN/GdNq0Ag+ZfnaF+nTWQep598jSweOYE3oXgbBm27B+ASt9CqENg==;EndpointSuffix=core.windows.net"
+      }
+    ]
+  }
