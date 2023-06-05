@@ -203,9 +203,10 @@ def generate_thumbnail_webjob(filename: AnyStr, thumbnail_filename: AnyStr) -> N
     # Connect to the thumbnail queue
     queue_client = QueueClient.from_connection_string(
         conn_str=connection_string,
-        queue_name=queue_name,
-        message_encode_policy=BinaryBase64EncodePolicy(),
-        message_decode_policy=BinaryBase64DecodePolicy())
+        queue_name=queue_name)
+
+    queue_client.message_encode_policy = BinaryBase64EncodePolicy()
+    queue_client.message_decode_policy = BinaryBase64DecodePolicy()
 
     # Create a message with the filename and thumbnail filename
     message_content = {
@@ -214,8 +215,10 @@ def generate_thumbnail_webjob(filename: AnyStr, thumbnail_filename: AnyStr) -> N
     }
 
     # Convert the message content to a string
-    message_content = str(message_content)
-    queue_client.send_message(message_content)
+    message_bytes = str(message_content).encode('ascii')
+    queue_client.send_message(
+        queue_client.message_encode_policy.encode(content=message_bytes)
+    )
 
 
 if __name__ == '__main__':
