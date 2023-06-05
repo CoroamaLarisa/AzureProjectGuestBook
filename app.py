@@ -6,7 +6,7 @@ import time
 from logging import FileHandler, WARNING
 from flask import Flask, render_template, request, redirect, url_for
 from azure.storage.blob import BlobServiceClient, generate_blob_sas, BlobSasPermissions
-from azure.storage.queue import QueueService, QueueMessageFormat
+from azure.storage.queue import QueueClient, BinaryBase64EncodePolicy, BinaryBase64DecodePolicy
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 from typing import AnyStr, List, Dict, Tuple
@@ -175,11 +175,34 @@ def generate_thumbnail_webjob(filename: AnyStr, thumbnail_filename: AnyStr) -> N
     - filename: AnyStr, the original filename
     - thumbnail_filename: the thumbnail filename
     """
+    # connection_string = app.config['AZURE_STORAGE_CONNECTION_STRING']
+    # queue_name = app.config['AZURE_STORAGE_QUEUE']
+
+    # # Connect to the thumbnail queue
+    # queue_client = QueueClient(connection_string=connection_string,
+    #                            )
+
+    # # Create a message with the filename and thumbnail filename
+    # message_content = {
+    #     'filename': filename,
+    #     'thumbnail_filename': thumbnail_filename
+    # }
+
+    # # Convert the message content to a string
+    # message_content = str(message_content)
+    # queue_client.encode_function = QueueMessageFormat.text_base64encode
+    # Send the message to the queue
+    # queue_client.put_message(queue_name=queue_name,
+    #                           content=message_content)
+
     connection_string = app.config['AZURE_STORAGE_CONNECTION_STRING']
     queue_name = app.config['AZURE_STORAGE_QUEUE']
 
     # Connect to the thumbnail queue
-    queue_service = QueueService(connection_string=connection_string)
+    queue_client = QueueClient(conn_str=connection_string,
+                               queue_name=queue_name,
+                               message_encode_policy=BinaryBase64EncodePolicy(),
+                               message_decode_policy=BinaryBase64DecodePolicy())
 
     # Create a message with the filename and thumbnail filename
     message_content = {
@@ -189,10 +212,7 @@ def generate_thumbnail_webjob(filename: AnyStr, thumbnail_filename: AnyStr) -> N
 
     # Convert the message content to a string
     message_content = str(message_content)
-    queue_service.encode_function = QueueMessageFormat.text_base64encode
-    # Send the message to the queue
-    queue_service.put_message(queue_name=queue_name,
-                              content=message_content)
+    queue_client.send_message(message_content)
 
 
 if __name__ == '__main__':
