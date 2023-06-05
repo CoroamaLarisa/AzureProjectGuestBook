@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        /* margin: 0; */
+        /* padding: 20px; */
+        top: 0px;
+        background-color: #efe2d9;
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+        color: #96b1ee;
+        margin-bottom: 20px;
+        font-size: 38px;
+        background-color: #fff8ea;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        top: 0px;
+        margin-top: 5px;
+      }
+
+      form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff8ea;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="file"],
+      textarea {
+        width: 90%;
+        padding: 20px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+        resize: none;
+        background-color: #fefaf2;
+      }
+
+      textarea {
+        height: 150px;
+      }
+
+      input[type="submit"] {
+        display: block;
+        width: 90%;
+        padding: 20px;
+        border: none;
+        background-color: #7870e676;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        align-self: center;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #5e57c886;
+      }
+
+      input[type="file"]::-webkit-file-upload-button {
+        background-color: #7870e676;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      input[type="file"]::-webkit-file-upload-button:hover {
+        background-color: #5e57c886;
+      }
+
+      input[type="file"]::-webkit-file-upload-button:active {
+        background-color: #7870e676;
+      }
+
+      .all_body {
+        margin-top: 80px;
+        background-color: #7870e676;
+        background-color: #fff8ea;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* max-width: 700px; */
+        padding: 10px;
+        width: 500px;
+        align-self: center;
+        display: inline-block;
+      }
+
+      .go-back-bubble {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: #7870e676;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .go-back-bubble:hover {
+        background-color: #5e57c886;
+      }
+    </style>
+    <title>Add Message</title>
+  </head>
+  <body>
+    <div class="go-back-bubble" onclick="history.back()">Go Back</div>
+    <div class="all_body">
+      <h1>Upload Message</h1>
+      <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <textarea name="review" placeholder="Enter your review"></textarea>
+        <input type="submit" value="Upload" />
+      </form>
+    </div>
+  </body>
+</html>
