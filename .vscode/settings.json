@@ -1,0 +1,15 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/10a79c86-cce4-4655-8362-f6ea62b7ff2b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/AzureProjectGuestBook",
+    "appService.deploySubpath": ".",
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.pythonVenv": "venv",
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.templateFilter": "Verified",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none"
+}
