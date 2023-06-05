@@ -201,10 +201,11 @@ def generate_thumbnail_webjob(filename: AnyStr, thumbnail_filename: AnyStr) -> N
     queue_name = app.config['AZURE_STORAGE_QUEUE']
 
     # Connect to the thumbnail queue
-    queue_client = QueueClient(conn_str=connection_string,
-                               queue_name=queue_name,
-                               message_encode_policy=BinaryBase64EncodePolicy(),
-                               message_decode_policy=BinaryBase64DecodePolicy())
+    queue_client = QueueClient.from_connection_string(
+        conn_str=connection_string,
+        queue_name=queue_name,
+        message_encode_policy=BinaryBase64EncodePolicy(),
+        message_decode_policy=BinaryBase64DecodePolicy())
 
     # Create a message with the filename and thumbnail filename
     message_content = {
