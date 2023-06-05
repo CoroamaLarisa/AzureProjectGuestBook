@@ -15,7 +15,9 @@ from typing import AnyStr, List, Dict, Tuple
 app = Flask(__name__)
 
 # Set app constants
-app.config['UPLOAD_FOLDER'] = 'C:\\Users\\Larisa\\Documents\\azure-project\\AzureProjectGuestBook\\AzureProjectGuestBook\\uploads'
+
+
+app.config['UPLOAD_FOLDER'] = './uploads'
 app.config['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=gcccstorageguestbook;AccountKey=A7mPkaoOQ+OHPGihyYattLUSmqRTA6WCHtN/GdNq0Ag+ZfnaF+nTWQep598jSweOYE3oXgbBm27B+ASt9CqENg==;EndpointSuffix=core.windows.net'
 app.config['AZURE_STORAGE_CONTAINER'] = 'images'
 app.config['AZURE_STORAGE_QUEUE'] = 'thumbnailqueue'
