@@ -177,25 +177,6 @@ def generate_thumbnail_webjob(filename: AnyStr, thumbnail_filename: AnyStr) -> N
     - filename: AnyStr, the original filename
     - thumbnail_filename: the thumbnail filename
     """
-    # connection_string = app.config['AZURE_STORAGE_CONNECTION_STRING']
-    # queue_name = app.config['AZURE_STORAGE_QUEUE']
-
-    # # Connect to the thumbnail queue
-    # queue_client = QueueClient(connection_string=connection_string,
-    #                            )
-
-    # # Create a message with the filename and thumbnail filename
-    # message_content = {
-    #     'filename': filename,
-    #     'thumbnail_filename': thumbnail_filename
-    # }
-
-    # # Convert the message content to a string
-    # message_content = str(message_content)
-    # queue_client.encode_function = QueueMessageFormat.text_base64encode
-    # Send the message to the queue
-    # queue_client.put_message(queue_name=queue_name,
-    #                           content=message_content)
 
     connection_string = app.config['AZURE_STORAGE_CONNECTION_STRING']
     queue_name = app.config['AZURE_STORAGE_QUEUE']
